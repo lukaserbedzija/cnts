@@ -40,12 +40,12 @@ Skup podataka je izdeljen u proporciji Trening, Validacioni, Test na: 75/15/10%
 
 | Accuracy | Nad validacionim | Nad testnim  |
 | :------: | :--------------: | :----------: |
-| Naš      | 95.43%           | 98.60%       |
-| VGG      | 97.27%           | 98.71%       |
+| Naš      | 90.00%           | 96.00%       |
+| VGG      | 92.00%           | 97.00%       |
 
 ### Rezultati treniranja modela nad glasovnim skupom:
 
-_Accuracy_ nad glasovnim test skupom podataka iznosi 92.8%.
+_Accuracy_ nad glasovnim test skupom podataka iznosi 91.00%.
 
 ## Struktura
  ./
