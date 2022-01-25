@@ -15,8 +15,8 @@ CNTS predstavlja projekat koji služi za upravljanje _Counter Strike 1.6_ zadava
 ### Skupovi podataka:
 * [Glasovni skup podataka](https://ai.googleblog.com/2017/08/launching-speech-commands-dataset.html)
 * [Originalni skup podataka ruke](https://drive.google.com/drive/u/0/folders/1Hj3N59H-WLxANH8zJPIwqeqQoomIj9FT)
-* [Transformisanji trening skup podataka ruke](https://drive.google.com/drive/u/4/folders/1AK69Apg3GPpM45lSbnmvg7-Fmi7KQW6T)
-* [Transformisanji test skup podataka ruke](https://drive.google.com/drive/u/4/folders/1QqaiqftelPoj8em5_2PyPU-zAZSt5J82)
+* [Transformisani trening skup podataka ruke](https://drive.google.com/drive/u/4/folders/1AK69Apg3GPpM45lSbnmvg7-Fmi7KQW6T)
+* [Transformisani test skup podataka ruke](https://drive.google.com/drive/u/4/folders/1QqaiqftelPoj8em5_2PyPU-zAZSt5J82)
 
 <small>
 Sve skupove podataka koji sadrže slike smo mi pravili.
@@ -25,7 +25,7 @@ Labela svake slike korespondira folderu u kojem se nalazi.
 
 ### Istrenirani modeli 
 * [Naš model na skupu podataka](https://drive.google.com/drive/u/4/folders/1mDOZUibSGsfHMTZrDdq5aTkRW96sXQ9A)
-* [VGG model na skupu podatak](https://drive.google.com/drive/u/4/folders/1Fzel9fw5Fkh9XlJzHg82-3mz9sa01--S)
+* [VGG model na skupu podataka](https://drive.google.com/drive/u/4/folders/1Fzel9fw5Fkh9XlJzHg82-3mz9sa01--S)
 * [Naš model na glasovnom skupu podataka](https://drive.google.com/drive/u/4/folders/1PHCroxWqK67dxM0qlqGx3FNtsQGjhFpE)
 
 <small>
