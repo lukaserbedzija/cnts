@@ -2,26 +2,25 @@ from controller.keyboard import key_press
 from controller.mouse import mouse_click, mouse_move
 from utils.background import unit_stopped, stop_all
 from utils.timeout import set_timeout
-import time
 
 
 actions = {
-    'I': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x02) },
-    'II': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x03) },
-    'III': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x04) },
-    'IV': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x05) },
-    'V': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x06) },
-    'LC': { 'onTimeout': False, 'timeoutDur': 5, 'execute': mouse_click('left') },
-    'RC': { 'onTimeout': False, 'timeoutDur': 5, 'execute': mouse_click('right') },
-    'R': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x13) },
-    'G': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x22) },
-    'B': { 'onTimeout': False, 'timeoutDur': 5, 'execute': key_press(0x30) },
-    'GO': { 'onTimeout': False, 'timeoutDur': 5, 'execute': unit_stopped(key_press(0x11)) },
-    'UP': { 'onTimeout': False, 'timeoutDur': 5, 'execute': unit_stopped(mouse_move('UP')) },
-    'DOWN': { 'onTimeout': False, 'timeoutDur': 5, 'execute': unit_stopped(mouse_move('DOWN')) },
-    'LEFT': { 'onTimeout': False, 'timeoutDur': 5, 'execute': unit_stopped(mouse_move('LEFT')) },
-    'RIGHT': { 'onTimeout': False, 'timeoutDur': 5, 'execute': unit_stopped(mouse_move('RIGHT')) },
-    'STOP': { 'onTimeout': False, 'timeoutDur': 0, 'execute': stop_all }
+    'I': { 'onTimeout': False, 'cascadeNumber': 7, 'timeoutDur': 0.3, 'execute': key_press(0x02) },
+    'II': { 'onTimeout': False, 'cascadeNumber': 7, 'timeoutDur': 0.3, 'execute': key_press(0x03) },
+    'III': { 'onTimeout': False, 'cascadeNumber': 7, 'timeoutDur': 0.3, 'execute': key_press(0x04) },
+    'IV': { 'onTimeout': False, 'cascadeNumber': 7, 'timeoutDur': 0.3, 'execute': key_press(0x05) },
+    'V': { 'onTimeout': False, 'cascadeNumber': 7, 'timeoutDur': 0.3, 'execute': key_press(0x06) },
+    'LC': { 'onTimeout': False, 'cascadeNumber': 5, 'timeoutDur': 0, 'execute': mouse_click('left') },
+    'RC': { 'onTimeout': False, 'cascadeNumber': 5, 'timeoutDur': 0, 'execute': mouse_click('right') },
+    'R': { 'onTimeout': False, 'cascadeNumber': 20, 'timeoutDur': 1, 'execute': key_press(0x13) },
+    'G': { 'onTimeout': False, 'cascadeNumber': 10, 'timeoutDur': 2, 'execute': key_press(0x22) },
+    'B': { 'onTimeout': False, 'cascadeNumber': 10, 'timeoutDur': 2, 'execute': key_press(0x30) },
+    'GO': { 'onTimeout': False, 'cascadeNumber': 1, 'timeoutDur': 0, 'execute': lambda : unit_stopped(key_press(0x11)) },
+    'UP': { 'onTimeout': False, 'cascadeNumber': 1, 'timeoutDur': 0, 'execute': lambda : unit_stopped(mouse_move('UP')) },
+    'DOWN': { 'onTimeout': False, 'cascadeNumber': 1, 'timeoutDur': 0, 'execute': lambda : unit_stopped(mouse_move('DOWN')) },
+    'LEFT': { 'onTimeout': False, 'cascadeNumber': 1, 'timeoutDur': 0, 'execute': lambda : unit_stopped(mouse_move('LEFT')) },
+    'RIGHT': { 'onTimeout': False, 'cascadeNumber': 1, 'timeoutDur': 0, 'execute': lambda : unit_stopped(mouse_move('RIGHT')) },
+    'STOP': { 'onTimeout': False, 'cascadeNumber': 1, 'timeoutDur': 0, 'execute': stop_all }
 }
 
 
@@ -46,15 +45,13 @@ def handle_action(action):
         return
 
     if not action in actions_buffer:
-        actions_buffer[action] = 1
-
-        return
+        actions_buffer[action] = 0
 
     actions_buffer[action] = actions_buffer[action] + 1
 
     print(actions_buffer)
 
-    if actions_buffer[action] == 10:
+    if actions_buffer[action] == actions[action]['cascadeNumber']:
         execute_action(action)
 
         actions[action]['onTimeout'] = True
@@ -65,8 +62,6 @@ def handle_action(action):
 
 
 def execute_action(action):
-    # time.sleep(3)
-
     print('executing ' + action)
 
     action_executor = actions[action]['execute']

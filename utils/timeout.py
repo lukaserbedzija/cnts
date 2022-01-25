@@ -37,7 +37,7 @@ class Timer():
         self.toClearTimer = True
 
 
-def set_timeout(fn, arg, ms):
+def set_timeout(fn, arg, seconds):
     timer = Timer(arg)
-    timer.setTimeout(fn, ms) 
+    timer.setTimeout(fn, seconds) 
 

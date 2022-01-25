@@ -13,7 +13,7 @@ def unit_stopped(fn):
     while not has_stopped:
       fn()
 
-  return Thread(target=fn_wrapper).start
+  return Thread(target=fn_wrapper).start()
 
 
 def stop_all():
